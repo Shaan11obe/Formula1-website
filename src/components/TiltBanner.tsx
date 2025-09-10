@@ -87,12 +87,9 @@ const TiltBanner: React.FC<TiltBannerProps> = ({ src, className }) => {
   }, []);
 
   return (
-    <div className={`w-full max-w-6xl h-[400px] mx-auto rounded-2xl overflow-hidden ${className}`} ref={cardRef} style={{ perspective: "1000px" }}>
+    <div className={`w-[90%] min-w-6xl h-[400px] mx-auto rounded-2xl overflow-hidden ${className}`} ref={cardRef} style={{ perspective: "1000px" }}>
       <div ref={innerRef} className="w-full h-full relative" style={{ transformStyle: "preserve-3d", transition: "transform 400ms cubic-bezier(.2,.9,.2,1)" }}>
-        <div ref={bgRef} className="absolute inset-0 -z-10" style={{ transition: "transform 400ms cubic-bezier(.2,.9,.2,1)" }}>
-          <Image src={src} alt="Banner background" fill className="object-cover brightness-90" />
-        </div>
-        <Image src={src} alt="Banner" fill className="object-cover rounded-2xl" />
+        <Image src={src} alt="Banner" fill className="object-contain rounded-2xl" />
       </div>
     </div>
   );
