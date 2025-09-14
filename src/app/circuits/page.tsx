@@ -1,5 +1,6 @@
 import CarouselSection from "@/components/Carousel";
 import CarGrid from "@/components/CarGrid";
+import TrackGrid from "@/components/TrackGrid"
 
 const TeamsPage = () => {
   const images = [
@@ -11,18 +12,18 @@ const TeamsPage = () => {
   return (
     <main className="pt-[80px]">
       <CarouselSection
-        title="Formula 1 Teams"
+        title="Formula 1 Circuits"
         description={[
           { text: "Founded over 75 years ago, Formula 1 has seen over " },
-          { text: "170", gradient: "bg-gradient-to-r from-violet-500 to-fuchsia-500" },
-          { text: " different teams compete in the sport. This has allowed it to earn over " },
-          { text: "7 billion", gradient: "bg-gradient-to-r from-violet-500 to-fuchsia-500" },
-          { text: " in just the last two years without official data from 2025." },
+          { text: "77", gradient: "bg-gradient-to-r from-violet-500 to-fuchsia-500" },
+          { text: " different circuits to host Grand prixs on. There have been tracks on all  " },
+          { text: "6", gradient: "bg-gradient-to-r from-violet-500 to-fuchsia-500" },
+          { text: " continents, of course excluding Antarctica, due to its icy landscape" },
         ]}
         images={images}
       />
 
-      <CarGrid />
+      <TrackGrid />
     </main>
   );
 };

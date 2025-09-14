@@ -16,7 +16,7 @@ const navitems: NavItem[] = [
     label: "Teams",
     link: "/teams",
     children: [
-      { label: "RedBull", link: "#", iconImage: "/redbull-logo.jpg" },
+      { label: "RedBull", link: "/teams/redbull", iconImage: "/redbull-logo.jpg" },
       { label: "Ferrari", link: "#", iconImage: "/ferrari-logo.jpg" },
       { label: "Mclaren", link: "#", iconImage: "/mclaren-logo.png" },
       { label: "Mercedes", link: "#", iconImage: "/mercedes-logo.png" },
@@ -34,7 +34,7 @@ const navitems: NavItem[] = [
     children: [
       {
         label: "Max Verstappen & Yuki Tsunoda",
-        link: "#",
+        link: "/drivers/redbull",
         iconImage: "/redbull-logo.jpg",
       },
       {
@@ -86,7 +86,7 @@ const navitems: NavItem[] = [
   },
   {
     label: "Circuits",
-    link: "",
+    link: "/circuits",
     children: [
       {
         label: "Europe",
@@ -145,7 +145,7 @@ const navitems: NavItem[] = [
 // Recursive dropdown component
 const Dropdown: React.FC<{ items: NavItem[] }> = ({ items }) => {
   return (
-    <div className="absolute left-0 top-10 hidden min-w-[200px] flex-col gap-1 rounded-lg bg-white py-3 shadow-md group-hover:flex">
+    <div className="absolute left-0 top-10 hidden min-w-[200px] flex-col gap-1 rounded-lg bg-white py-3 shadow-md group-hover:flex z-50">
       {items.map((ch, i) => (
         <div key={i} className="relative group/sub px-2">
           <Link
