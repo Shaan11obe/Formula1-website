@@ -9,7 +9,7 @@ const TeamsPage = () => {
   ];
 
   return (
-    <main className="pt-[80px]">
+    <main className="">
       <CarouselSection
         title="Formula 1 Teams"
         description={[

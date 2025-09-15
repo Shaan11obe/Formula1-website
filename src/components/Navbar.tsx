@@ -123,20 +123,20 @@ const navitems: NavItem[] = [
       },
       {
         label: "South America",
-        children: [{ label: "Interlagos (Brazil)", link: "#" }],
+        children: [{ label: "Interlagos (Brazil)", link: "/circuits/south" }],
       },
       {
         label: "Middle East",
         children: [
-          { label: "Bahrain International Circuit", link: "#" },
-          { label: "Jeddah Corniche Circuit", link: "#" },
-          { label: "Yas Marina Circuit", link: "#" },
-          { label: "Losail International Circuit (Qatar)", link: "#" },
+          { label: "Bahrain International Circuit", link: "/circuits/middle-east/bahrain" },
+          { label: "Jeddah Corniche Circuit", link: "/circuits/middle-east/jeddah" },
+          { label: "Yas Marina Circuit", link: "/circuits/middle-east/abu-dhabi" },
+          { label: "Losail International Circuit (Qatar)", link: "/circuits/middle-east/qatar" },
         ],
       },
       {
         label: "Oceania",
-        children: [{ label: "Albert Park Circuit (Melbourne)", link: "#" }],
+        children: [{ label: "Albert Park Circuit (Melbourne)", link: "/circuits/oceania" }],
       },
     ],
   },
