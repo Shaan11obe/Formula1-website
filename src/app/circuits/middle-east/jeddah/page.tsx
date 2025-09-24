@@ -30,7 +30,7 @@ const page = () => {
         circuitName="Jeddah Corniche Circuit"
         country="Saudi Arabia"
         info="'yabba dabba doo'~ Scooby Doo"
-        trackImg="/tracks/JEDDAH.png"
+        trackImg="${basePath}/tracks/JEDDAH.png"
       />
     </section>
   );

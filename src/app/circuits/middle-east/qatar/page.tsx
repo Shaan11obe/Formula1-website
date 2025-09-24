@@ -30,7 +30,7 @@ const page = () => {
         circuitName="Losail International Circuit"
         country="Qatar"
         info="'yabba dabba doo'~ Scooby Doo"
-        trackImg="/tracks/QATAR.png"
+        trackImg="${basePath}/tracks/QATAR.png"
       />
     </section>
   );

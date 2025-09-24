@@ -8,10 +8,10 @@ export default function Page() {
       <DriverStats
         driverName="Lewis Hamilton"
         team="Scuderia Ferrari"
-        driverNumber="16"
-        country="Monaco"
+        driverNumber="44"
+        country="Great Britain"
         teamColor="#c4151c" // Ferrari Red
-        driverImage="/drivers/lec.png"
+        driverImage="${basePath}/drivers/ham.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",

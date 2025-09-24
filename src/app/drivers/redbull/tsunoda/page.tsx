@@ -9,7 +9,7 @@ export default function Page() {
         driverNumber="22"
         country="Japan"
         teamColor="#00174C" // Redbull purple
-        driverImage="/drivers/tsu.png"
+        driverImage="${basePath}/drivers/tsu.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",
