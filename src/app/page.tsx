@@ -1,7 +1,5 @@
 "use client";
 
-import TiltCard from "@/components/TiltCard";
-import TiltBanner from "@/components/TiltBanner";
 import CarGrid from "@/components/CarGrid"
 
 export default function Home() {

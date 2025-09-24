@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="14"
         country="Spanish"
         teamColor="#037A68" // Aston Martin Green   
-        driverImage="${basePath}/drivers/alo.png"
+        driverImage="./drivers/alo.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",
@@ -40,7 +40,7 @@ export default function Page() {
           "World Championships": "0",
           "DNFs": "15",
         }}
-        memeImage="${basePath}/memes/fernando.jpg" // 👈 sticker in bottom-right
+        memeImage="./memes/fernando.jpg" // 👈 sticker in bottom-right
       />
     </main>
   );

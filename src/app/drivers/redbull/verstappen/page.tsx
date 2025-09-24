@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="1"
         country="Netherlands"
         teamColor="#00174C" // Redbull purple
-        driverImage="${basePath}/drivers/ver.png"
+        driverImage="./drivers/ver.png"
         seasonStats={{
           "Season Position": "3rd",
           "Season Points": "230",

@@ -12,7 +12,7 @@ const page = () => {
         driversLink="/drivers/redbull"
         divider={
           <img
-            src="${basePath}/red-bull-logo.png"
+            src="./red-bull-logo.png"
             alt="Red Bull logo"
             className="w-12 h-12"
           />
