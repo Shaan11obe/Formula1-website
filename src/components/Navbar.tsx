@@ -74,12 +74,12 @@ const navitems: NavItem[] = [
       },
       {
         label: "Fernando Alonso",
-        link: "#",
+        link: "/drivers/aston-martin/alonso",
         iconImage: "/astonMartin-logo.png",
       },
       {
         label: "Lance Stroll",
-        link: "#",
+        link: "/drivers/aston-martin/stroll",
         iconImage: "/astonMartin-logo.png",
       },
       {

@@ -98,7 +98,7 @@ const DriverStats: React.FC<DriverStatsProps> = ({
 
         {/* Meme sticker (optional, bigger + responsive) */}
         {memeImage && (
-          <div className="absolute bottom-6 right-6 w-40 h-40 md:w-86 md:h-86">
+          <div className="absolute bottom-1 right-20 w-40 h-40 md:w-100 md:h-86">
             <Image
               src={memeImage}
               alt="Meme"
