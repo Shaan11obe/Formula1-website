@@ -2,12 +2,13 @@
 
 import React, { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type TeamPromoProps = {
   teamName: string;
   carImage: string;
   drivers: string[];
-  driversLink?: string; // 👈 new prop
+  driversLink?: string;
   shopLink?: string;
   backgroundColor?: string;
   divider?: ReactNode;
@@ -22,6 +23,9 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
   backgroundColor = "bg-neutral-900",
   divider,
 }) => {
+  // Normalize in case someone passes "public/"
+  const normalizedCarImage = carImage.replace(/^\/?public\//, "/");
+
   return (
     <section
       className={`${backgroundColor} relative w-full flex flex-col items-center justify-center overflow-hidden py-20`}
@@ -31,11 +35,16 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
 
       {/* Car Image */}
       <div className="relative z-10 w-full max-w-6xl flex justify-center mb-8">
-        <img
-          src={carImage}
-          alt={`${teamName} F1 car`}
-          className="w-full object-contain max-h-[28rem] drop-shadow-2xl"
-        />
+        <div className="relative w-full h-[28rem]">
+          <Image
+            src={normalizedCarImage}
+            alt={`${teamName} F1 car`}
+            fill
+            className="object-contain drop-shadow-2xl"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            priority
+          />
+        </div>
       </div>
 
       {/* Team Name */}
@@ -59,9 +68,7 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
       {/* Divider / Logo */}
       {divider && (
         <div className="relative z-10 mb-6 flex justify-center">
-          <div className="w-16 h-16 flex items-center justify-center">
-            {divider}
-          </div>
+          <div className="w-16 h-16 flex items-center justify-center">{divider}</div>
         </div>
       )}
 

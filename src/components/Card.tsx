@@ -1,26 +1,35 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 type CardProps = {
-  image: string;
+  image: string; // expects "/mclaren-logo.png" or "/teams/mclaren-logo.png"
   title: string;
   description?: string;
   href?: string;
 };
 
 const Card: React.FC<CardProps> = ({ image, title, description, href = "#" }) => {
+  // Normalize in case someone passes "public/"
+  const normalizedImage = image.replace(/^\/?public\//, "/");
+
   return (
     <a
       href={href}
       className="block max-w-xs rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition"
     >
       {/* Image */}
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-48 object-cover rounded-t-2xl"
-      />
+      <div className="relative w-full h-48">
+        <Image
+          src={normalizedImage}
+          alt={title}
+          fill
+          className="object-cover rounded-t-2xl"
+          sizes="(max-width: 768px) 100vw, 300px" // optimize for responsiveness
+          priority={false}
+        />
+      </div>
 
       {/* Text */}
       <div className="p-4">
