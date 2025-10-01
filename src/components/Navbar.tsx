@@ -45,7 +45,7 @@ const navitems: NavItem[] = [
       {
         label: "Charles Leclerc",
         link: "/drivers/ferrari/leclerc",
-        iconImage: " /ferrari-logo.png",
+        iconImage: "/ferrari-logo.png",
       },
       {
         label: "Lewis Hamilton",
