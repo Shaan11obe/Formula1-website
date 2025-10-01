@@ -2,8 +2,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-Join my Live Server through this link: https://prod.liveshare.vsengsaas.visualstudio.com/join?9304ABFEF23D07BD9F8A7A0D93501C97A8C0
-
 First, run the development server:
 
 ```bash
