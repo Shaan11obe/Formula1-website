@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="44"
         country="Great Britain"
         teamColor="#c4151c" // Ferrari Red
-        driverImage="./drivers/ham.png"
+        driverImage="/drivers/ham.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",

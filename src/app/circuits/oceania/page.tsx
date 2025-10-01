@@ -28,7 +28,7 @@ const sampleSchedule = [
 const page = () => {
   return(
     <section className="pt-12 min-h-screen">
-    <ScheduleCard schedule={sampleSchedule} circuitName='Melbourne Grand Prix Circuit' country='Australia' info="'yabba dabba doo'~ Scooby Doo" trackImg="./tracks/ALBERT_PARK.png" />
+    <ScheduleCard schedule={sampleSchedule} circuitName='Melbourne Grand Prix Circuit' country='Australia' info="'yabba dabba doo'~ Scooby Doo" trackImg="/tracks/ALBERT_PARK.png" />
     </section>
   )
 }

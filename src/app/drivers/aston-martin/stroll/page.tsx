@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="18"
         country="Canadian"
         teamColor="#037A68" // Aston Martin Green   
-        driverImage="./drivers/str.png"
+        driverImage="/drivers/str.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",
@@ -40,7 +40,7 @@ export default function Page() {
           "World Championships": "0",
           "DNFs": "15",
         }}
-        memeImage="./memes/strolled.jpg" // 👈 sticker in bottom-right
+        memeImage="/memes/strolled.jpg" // 👈 sticker in bottom-right
       />
     </main>
   );
