@@ -3,6 +3,7 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { withBasePath } from "@/utils/basePath";
 
 type TeamPromoProps = {
   teamName: string;
@@ -23,8 +24,8 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
   backgroundColor = "bg-neutral-900",
   divider,
 }) => {
-  // Normalize in case someone passes "public/"
-  const normalizedCarImage = carImage.replace(/^\/?public\//, "/");
+  // Normalize and add base path
+  const normalizedCarImage = withBasePath(carImage.replace(/^\/?public\//, "/"));
 
   return (
     <section

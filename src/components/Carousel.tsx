@@ -3,15 +3,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { withBasePath } from "@/utils/basePath";
 
 type DescriptionPart = {
   text: string;
-  gradient?: string; // optional gradient for highlights
+  gradient?: string;
 };
 
 type CarouselSectionProps = {
   title: string;
-  description: DescriptionPart[]; // array to allow inline highlights
+  description: DescriptionPart[];
   images: string[];
 };
 
@@ -30,8 +31,9 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
-  // Normalize any accidental "public/" prefix
-  const normalizePath = (path: string) => path.replace(/^\/?public\//, "/");
+  // Normalize and add base path
+  const getImageSrc = (path: string) =>
+    withBasePath(path.replace(/^\/?public\//, "/"));
 
   return (
     <section className="min-h-screen flex flex-col md:flex-row items-center justify-center text-4xl space-y-12 md:space-y-0 md:space-x-12 px-4">
@@ -58,7 +60,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
       <div className="relative h-96 w-full max-w-md flex flex-col items-center justify-center">
         <div className="relative w-full h-full overflow-hidden rounded-xl">
           <Image
-            src={normalizePath(images[currentIndex])}
+            src={getImageSrc(images[currentIndex])}
             alt={`carousel image ${currentIndex + 1}`}
             fill
             className="object-cover transition-all duration-500 rounded-xl"

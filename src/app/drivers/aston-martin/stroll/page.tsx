@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="18"
         country="Canadian"
         teamColor="#037A68" // Aston Martin Green   
-        driverImage={`${basePath}/drivers/str.png`}
+        driverImage="/drivers/str.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",

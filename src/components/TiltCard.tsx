@@ -2,13 +2,14 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import { withBasePath } from "@/utils/basePath";
 
 interface TiltCardProps {
   src: string;
   title?: string;
   subtitle?: string;
   className?: string;
-  contain?: boolean;   
+  contain?: boolean;
 }
 
 const TiltCard: React.FC<TiltCardProps> = ({ src, title, subtitle, className, contain }) => {
@@ -91,6 +92,9 @@ const TiltCard: React.FC<TiltCardProps> = ({ src, title, subtitle, className, co
     };
   }, []);
 
+  // Normalize and add base path for the image
+  const normalizedSrc = withBasePath(src.replace(/^\/?public\//, "/"));
+
   return (
     <div
       ref={cardRef}
@@ -108,13 +112,13 @@ const TiltCard: React.FC<TiltCardProps> = ({ src, title, subtitle, className, co
           className="absolute inset-0 -z-10"
           style={{ transition: "transform 400ms cubic-bezier(.2,.9,.2,1)" }}
         >
-          <Image src={src} alt="" fill className="object-cover brightness-95 opacity-10" />
+          <Image src={normalizedSrc} alt="" fill className="object-cover brightness-95 opacity-10" />
         </div>
 
         <div className="relative w-full h-full">
           <div ref={imgRef} className="w-full h-full">
             <Image
-              src={src}
+              src={normalizedSrc}
               alt={title || "Tilt card"}
               fill
               className={`${contain ? "object-contain bg-black" : "object-cover"} rounded-2xl shadow-inner`}

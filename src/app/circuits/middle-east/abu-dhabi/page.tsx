@@ -32,7 +32,7 @@ const page = () => {
         circuitName="Yas Marina Circuit"
         country="Abu Dhabi - UAE"
         info="'yabba dabba doo'~ Scooby Doo"
-        trackImg={`${basePath}/tracks/YAS-MARINA.png`}
+        trackImg="/tracks/YAS-MARINA.png"
       />
     </section>
   );

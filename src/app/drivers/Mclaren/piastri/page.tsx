@@ -10,7 +10,7 @@ export default function Page() {
         driverNumber="81"
         country="Australia"
         teamColor="#FF8000" // McLaren papaya
-        driverImage={`${basePath}/drivers/pia.png`}
+        driverImage="/drivers/pia.png"
         seasonStats={{
           "Season Position": "1st",
           "Season Points": "324",

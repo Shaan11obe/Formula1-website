@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import Card from "@/components/Card"; // assuming Card is in components folder
+import Card from "@/components/Card";
+import { withBasePath } from "@/utils/basePath";
 
 const TrackGrid = () => {
   const teams = [
@@ -157,9 +158,10 @@ const TrackGrid = () => {
         {teams.map((team, idx) => (
           <Card
             key={idx}
-            image={team.image}
+            image={withBasePath(team.image.replace(/^\/?public\//, "/"))}
             title={team.title}
             description={team.description}
+            href={team.href}
           />
         ))}
       </div>

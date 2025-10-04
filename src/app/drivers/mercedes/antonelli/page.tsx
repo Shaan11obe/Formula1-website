@@ -12,7 +12,7 @@ export default function Page() {
         driverNumber="12"
         country="Italy"
         teamColor="#C8CCCE" // Mercedes Grey   
-        driverImage={`${basePath}/drivers/ant.png`}
+        driverImage="/drivers/ant.png"
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",

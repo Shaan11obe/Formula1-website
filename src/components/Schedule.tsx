@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Image from "next/image";
+import { withBasePath } from "@/utils/basePath";
 
 type Session = {
   name: string;
@@ -31,6 +32,9 @@ const ScheduleCard: React.FC<ScheduleCardProps> = ({
 }) => {
   const [open, setOpen] = useState(true);
 
+  // Normalize and add base path for the track image
+  const normalizedTrackImg = withBasePath(trackImg.replace(/^\/?public\//, "/"));
+
   return (
     <div className="bg-white text-black p-6 rounded-xl shadow-md w-3/4 max-w-6xl mx-auto font-sans">
       <div className="flex space-x-46 mb-4">
@@ -43,7 +47,7 @@ const ScheduleCard: React.FC<ScheduleCardProps> = ({
 
         {/* Dynamic track image */}
         <Image
-          src={trackImg}
+          src={normalizedTrackImg}
           alt={`${circuitName} track`}
           width={300}
           height={200}

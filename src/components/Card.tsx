@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { withBasePath } from "@/utils/basePath";
 
 type CardProps = {
   image: string; // expects "/mclaren-logo.png" or "/teams/mclaren-logo.png"
@@ -22,11 +23,11 @@ const Card: React.FC<CardProps> = ({ image, title, description, href = "#" }) =>
       {/* Image */}
       <div className="relative w-full h-48">
         <Image
-          src={normalizedImage}
+          src={withBasePath(normalizedImage)}
           alt={title}
           fill
           className="object-cover rounded-t-2xl"
-          sizes="(max-width: 768px) 100vw, 300px" // optimize for responsiveness
+          sizes="(max-width: 768px) 100vw, 300px"
           priority={false}
         />
       </div>

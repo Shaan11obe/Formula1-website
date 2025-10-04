@@ -2,20 +2,22 @@
 
 import React from "react";
 import Image from "next/image";
+import { withBasePath } from "@/utils/basePath";
 
-type Stats = Record<string, string | number>;
+type StatsObject = { [label: string]: string | number };
 
 type DriverStatsProps = {
   driverName: string;
   team: string;
-  driverNumber: string;
-  country: string;
-  teamColor: string;
+  driverNumber?: string | number;
+  country?: string;
+  teamColor?: string;
   driverImage: string;
-  seasonHeading?: string;
-  seasonStats: Stats;
-  careerStats: Stats;
-  memeImage?: string; // 👈 optional meme sticker
+  teamLogo?: string;
+  teamName?: string;
+  seasonStats?: StatsObject;
+  careerStats?: StatsObject;
+  memeImage?: string;
 };
 
 const DriverStats: React.FC<DriverStatsProps> = ({
@@ -25,89 +27,88 @@ const DriverStats: React.FC<DriverStatsProps> = ({
   country,
   teamColor,
   driverImage,
-  seasonHeading = "2025 Season",
+  teamLogo,
+  teamName,
   seasonStats,
   careerStats,
   memeImage,
 }) => {
   return (
-    <div className="w-full max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-lg bg-white">
-      {/* HEADER */}
-      <div
-        className="relative flex flex-col items-center justify-center px-10 py-12 text-white"
-        style={{ backgroundColor: teamColor }}
-      >
-        {/* Faded number behind image */}
-        <span className="absolute text-[16rem] font-extrabold text-white/20 leading-none select-none">
-          {driverNumber}
-        </span>
-
-        {/* Driver image */}
-        <div className="relative w-60 h-72 z-10">
-          <Image
-            src={driverImage}
-            alt={driverName}
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
-
-        {/* Info */}
-        <div className="z-10 mt-4 text-center">
-          <h1 className="text-5xl font-bold">{driverName}</h1>
-          <p className="text-xl opacity-90 mt-2">
-            #{driverNumber} · {team} · {country}
-          </p>
-        </div>
-      </div>
-
-      {/* STATS GRID */}
-      <div className="relative grid md:grid-cols-2 gap-10 p-10 bg-gray-50">
-        {/* Season */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">{seasonHeading}</h2>
-          <ul className="space-y-2">
-            {Object.entries(seasonStats).map(([key, value]) => (
-              <li
-                key={key}
-                className="flex justify-between border-b border-gray-200 pb-1"
-              >
-                <span className="text-gray-700">{key}</span>
-                <span className="font-semibold">{value}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Career */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">Career Stats</h2>
-          <ul className="space-y-2">
-            {Object.entries(careerStats).map(([key, value]) => (
-              <li
-                key={key}
-                className="flex justify-between border-b border-gray-200 pb-1"
-              >
-                <span className="text-gray-700">{key}</span>
-                <span className="font-semibold">{value}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Meme sticker (optional, bigger + responsive) */}
+    <div
+      className="flex flex-col items-center bg-white rounded-xl shadow-lg p-6 max-w-2xl mx-auto relative"
+      style={teamColor ? { borderColor: teamColor, borderWidth: 3 } : {}}
+    >
+      {/* Driver Image */}
+      <div className="relative w-40 h-40 mb-4">
+        <Image
+          src={withBasePath(driverImage.replace(/^\/?public\//, "/"))}
+          alt={driverName}
+          fill
+          className="object-cover rounded-full"
+          sizes="160px"
+        />
         {memeImage && (
-          <div className="absolute bottom-1 right-20 w-40 h-40 md:w-100 md:h-86">
+          <div className="absolute bottom-0 right-0 w-16 h-16">
             <Image
-              src={memeImage}
+              src={withBasePath(memeImage.replace(/^\/?public\//, "/"))}
               alt="Meme"
               fill
-              className="object-contain rounded-xl"
+              className="object-contain rounded-full border-2 border-white"
+              sizes="64px"
             />
           </div>
         )}
       </div>
+      {/* Driver Number */}
+      {driverNumber && (
+        <span className="text-xl font-bold text-gray-700 mb-1">#{driverNumber}</span>
+      )}
+      {/* Driver Name */}
+      <h2 className="text-2xl font-bold mb-1">{driverName}</h2>
+      {/* Country */}
+      {country && (
+        <span className="text-lg text-gray-600 mb-2">{country}</span>
+      )}
+      {/* Team Name */}
+      <div className="flex items-center gap-2 mb-4">
+        {teamLogo && (
+          <Image
+            src={withBasePath(teamLogo.replace(/^\/?public\//, "/"))}
+            alt={teamName || team}
+            width={32}
+            height={24}
+          />
+        )}
+        <span className="text-lg font-semibold">{teamName || team}</span>
+      </div>
+      {/* Season Stats */}
+      {seasonStats && (
+        <div className="w-full mb-4">
+          <h3 className="text-lg font-bold mb-2 text-green-700">Season Stats</h3>
+          <ul>
+            {Object.entries(seasonStats).map(([label, value]) => (
+              <li key={label} className="flex justify-between py-1 border-b last:border-b-0">
+                <span className="font-medium">{label}</span>
+                <span>{value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* Career Stats */}
+      {careerStats && (
+        <div className="w-full mb-2">
+          <h3 className="text-lg font-bold mb-2 text-blue-700">Career Stats</h3>
+          <ul>
+            {Object.entries(careerStats).map(([label, value]) => (
+              <li key={label} className="flex justify-between py-1 border-b last:border-b-0">
+                <span className="font-medium">{label}</span>
+                <span>{value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
