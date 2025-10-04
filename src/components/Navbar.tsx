@@ -4,14 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
-;
-
-// Helper to prepend basePath for static builds (like GitHub Pages)
-const withBasePath = (path: string) => {
-  if (typeof window === "undefined") return path;
-  const basePath = window.__NEXT_DATA__?.assetPrefix || "";
-  return `${basePath}${path}`;
-};
+import { withBasePath } from "@/utils/basePath";
 
 type NavItem = {
   label: string;
@@ -20,22 +13,22 @@ type NavItem = {
   iconImage?: string;
 };
 
-// Navigation items
+// Full navigation items
 const navitems: NavItem[] = [
   {
     label: "Teams",
     link: "/teams",
     children: [
       { label: "RedBull", link: "/teams/RedBull", iconImage: "/red-bull-logo.png" },
-      { label: "Ferrari", link: "#", iconImage: "/ferrari-logo.png" },
-      { label: "Mclaren", link: "#", iconImage: "/mclaren-logo.png" },
-      { label: "Mercedes", link: "#", iconImage: "/mercedes-logo.png" },
-      { label: "Aston Martin", link: "#", iconImage: "/astonMartin-logo.png" },
-      { label: "Haas", link: "#", iconImage: "/haas-logo.png" },
-      { label: "Racing Bulls", link: "#", iconImage: "/racingbulls-logo.png" },
-      { label: "Williams", link: "#", iconImage: "/williams-logo.png" },
-      { label: "Alpine", link: "#", iconImage: "/alpine-logo.png" },
-      { label: "Kick Sauber", link: "#", iconImage: "/sauber-logo.png" },
+      { label: "Ferrari", link: "/teams/Ferrari", iconImage: "/ferrari-logo.png" },
+      { label: "Mclaren", link: "/teams/Mclaren", iconImage: "/mclaren-logo.png" },
+      { label: "Mercedes", link: "/teams/Mercedes", iconImage: "/mercedes-logo.png" },
+      { label: "Aston Martin", link: "/under-construction", iconImage: "/astonMartin-logo.png" },
+      { label: "Haas", link: "/teams/Haas", iconImage: "/haas-logo.png" },
+      { label: "Racing Bulls", link: "/teams/Racing-Bulls", iconImage: "/racingbulls-logo.png" },
+      { label: "Williams", link: "/teams/Williams", iconImage: "/williams-logo.png" },
+      { label: "Alpine", link: "/under-construction", iconImage: "/alpine-logo.png" },
+      { label: "Kick Sauber", link: "/under-construction", iconImage: "/sauber-logo.png" },
     ],
   },
   {
@@ -48,76 +41,62 @@ const navitems: NavItem[] = [
       { label: "Lewis Hamilton", link: "/drivers/ferrari/hamilton", iconImage: "/ferrari-logo.png" },
       { label: "Oscar Piastri", link: "/drivers/Mclaren/piastri", iconImage: "/mclaren-logo.png" },
       { label: "Lando Norris", link: "/drivers/Mclaren/norris", iconImage: "/mclaren-logo.png" },
-      { label: "George Russell", link: "/drivers/mercedes/russell", iconImage: "/mercedes-logo.png" },
       { label: "Andrea Kimi Antonelli", link: "/drivers/mercedes/antonelli", iconImage: "/mercedes-logo.png" },
+      { label: "George Russell", link: "/drivers/mercedes/russell", iconImage: "/mercedes-logo.png" },
       { label: "Fernando Alonso", link: "/drivers/aston-martin/alonso", iconImage: "/astonMartin-logo.png" },
       { label: "Lance Stroll", link: "/drivers/aston-martin/stroll", iconImage: "/astonMartin-logo.png" },
-      { label: "Esterban Ocon", link: "/under-construction", iconImage: "/haas-logo.png" },
-      { label: "Oliver Bearman", link: "#", iconImage: "/haas-logo.png" },
-      { label: "Liam Lawson", link: "/under-construction", iconImage: "/racingbulls-logo.png" },
-      { label: "Isack Hadjar", link: "#", iconImage: "/racingbulls-logo.png" },
-      { label: "Alex Albon", link: "#", iconImage: "/williams-logo.png" },
-      { label: "Carlos Sainz", link: "#", iconImage: "/williams-logo.png" },
-      { label: "Pierre Gasly", link: "/under-construction", iconImage: "/alpine-logo.png" },
-      { label: "Franco Colapinto", link: "#", iconImage: "/alpine-logo.png" },
-      { label: "Gabriel Bortoleto", link: "#", iconImage: "/sauber-logo.png" },
-      { label: "Nico Hülkenberg", link: "#", iconImage: "/sauber-logo.png" },
+      { label: "Esteban Ocon", link: "/under-construction", iconImage: "/haas-logo.png" },
+      { label: "Oliver Bearman", link: "/drivers/haas", iconImage: "/haas-logo.png" },
+      { label: "Liam Lawson", link: "/under-connstruction", iconImage: "/racingbulls-logo.png" },
+      { label: "Isack Hadjar", link: "/drivers/rb", iconImage: "/racingbulls-logo.png" },
+      { label: "Alex Albon", link: "/drivers/williams/albon", iconImage: "/williams-logo.png" },
+      { label: "Carlos Sainz", link: "/drivers/williams/sainz", iconImage: "/williams-logo.png" },
+      { label: "Pierre Gasly", link: "/drivers/alpine/gasly", iconImage: "/alpine-logo.png" },
+      { label: "Franco Colapinto", link: "/under-connstruction", iconImage: "/alpine-logo.png" },
+      { label: "Gabriel Bortoleto", link: "/drivers/sauber/bortoleto", iconImage: "/sauber-logo.png" },
+      { label: "Nico Hülkenberg", link: "/drivers/sauber/hulkenberg", iconImage: "/sauber-logo.png" },
     ],
   },
   {
     label: "Circuits",
     link: "/circuits",
     children: [
-      {
-        label: "Europe",
-        children: [
+      { label: "Europe", children: [
           { label: "Silverstone", link: "#" },
           { label: "Monza", link: "#" },
           { label: "Spa-Francorchamps", link: "#" },
-          { label: "Circuit de Barcelona-Catalunya", link: "/under-construction" },
+          { label: "Circuit de Barcelona-Catalunya", link: "/under-connstruction" },
           { label: "Circuit Zandvoort", link: "#" },
-          { label: "Emila-Romanga (Imola)", link: "/under-construction" },
+          { label: "Emilia-Romagna (Imola)", link: "/under-connstruction" },
           { label: "Circuit de Monaco", link: "#" },
           { label: "Red Bull Ring (Austria)", link: "#" },
           { label: "Hungaroring", link: "#" },
-        ],
-      },
-      {
-        label: "Asia",
-        children: [
+        ]},
+      { label: "Asia", children: [
           { label: "Suzuka", link: "#" },
           { label: "Shanghai", link: "#" },
           { label: "Marina Bay Street Circuit (Singapore)", link: "#" },
           { label: "Baku City Circuit", link: "#" },
-        ],
-      },
-      {
-        label: "North America",
-        children: [
+        ]},
+      { label: "North America", children: [
           { label: "Circuit of the Americas", link: "#" },
           { label: "Miami International Autodrome", link: "#" },
-          { label: "Las Vegas Strip Circuit", link: "/under-construction" },
+          { label: "Las Vegas Strip Circuit", link: "/under-connstruction" },
           { label: "Montréal (Gilles Villeneuve)", link: "#" },
           { label: "Autodromo Hermanos Rodriguez (Mexico)", link: "#" },
-        ],
-      },
-      {
-        label: "South America",
-        children: [{ label: "Interlagos (Brazil)", link: "/circuits/south" }],
-      },
-      {
-        label: "Middle East",
-        children: [
+        ]},
+      { label: "South America", children: [
+          { label: "Interlagos (Brazil)", link: "/circuits/south" },
+        ]},
+      { label: "Middle East", children: [
           { label: "Bahrain International Circuit", link: "/circuits/middle-east/bahrain" },
           { label: "Jeddah Corniche Circuit", link: "/circuits/middle-east/jeddah" },
           { label: "Yas Marina Circuit", link: "/circuits/middle-east/abu-dhabi" },
           { label: "Losail International Circuit (Qatar)", link: "/circuits/middle-east/qatar" },
-        ],
-      },
-      {
-        label: "Oceania",
-        children: [{ label: "Albert Park Circuit (Melbourne)", link: "/circuits/oceania" }],
-      },
+        ]},
+      { label: "Oceania", children: [
+          { label: "Albert Park Circuit (Melbourne)", link: "/circuits/oceania" },
+        ]},
     ],
   },
 ];
@@ -143,7 +122,6 @@ const Dropdown: React.FC<{ items: NavItem[] }> = ({ items }) => {
               )}
               <span>{ch.label}</span>
             </div>
-
             {ch.children && <IoIosArrowDown className="ml-2 text-sm" />}
           </Link>
 
@@ -198,7 +176,6 @@ const Navbar = () => {
                 )}
               </Link>
 
-              {/* Dropdown */}
               {d.children && <Dropdown items={d.children} />}
             </div>
           ))}
