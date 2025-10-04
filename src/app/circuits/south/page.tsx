@@ -1,5 +1,7 @@
 import React from 'react'
 import ScheduleCard from "@/components/Schedule"
+// At the top of your component file
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 
 const brazilSchedule = [
@@ -28,7 +30,7 @@ const brazilSchedule = [
 const page = () => {
   return(
     <section className="pt-12 min-h-screen">
-    <ScheduleCard schedule={brazilSchedule} circuitName='Autódromo José Carlos Pace' country='Brazil' info="'yabba dabba doo'~ Scooby Doo" trackImg="/tracks/INTERLAGOS.png" />
+    <ScheduleCard schedule={brazilSchedule} circuitName='Autódromo José Carlos Pace' country='Brazil' info="'yabba dabba doo'~ Scooby Doo" trackImg={`${basePath}/tracks/INTERLAGOS.png`} />
     </section>
   )
 }

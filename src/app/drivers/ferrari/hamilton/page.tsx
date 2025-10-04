@@ -1,5 +1,5 @@
 import DriverStats from "@/components/Driver";
-
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 // not completed yet
 
 export default function Page() {
@@ -11,7 +11,7 @@ export default function Page() {
         driverNumber="44"
         country="Great Britain"
         teamColor="#c4151c" // Ferrari Red
-        driverImage="/drivers/ham.png"
+        driverImage={`${basePath}/drivers/ham.png`}
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",

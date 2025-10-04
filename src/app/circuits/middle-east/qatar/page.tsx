@@ -1,5 +1,7 @@
 import React from "react";
 import ScheduleCard from "@/components/Schedule";
+// At the top of your component file
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const bahrainSchedule = [
   {
@@ -30,7 +32,7 @@ const page = () => {
         circuitName="Losail International Circuit"
         country="Qatar"
         info="'yabba dabba doo'~ Scooby Doo"
-        trackImg="/tracks/QATAR.png"
+        trackImg={`${basePath}/tracks/QATAR.png`}
       />
     </section>
   );

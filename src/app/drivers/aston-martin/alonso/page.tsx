@@ -1,5 +1,6 @@
 import DriverStats from "@/components/Driver";
-
+// At the top of your component file
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 // not completed yet
 
 export default function Page() {
@@ -11,7 +12,7 @@ export default function Page() {
         driverNumber="14"
         country="Spanish"
         teamColor="#037A68" // Aston Martin Green   
-        driverImage="/drivers/alo.png"
+        driverImage={`${basePath}/drivers/alo.png`}
         seasonStats={{
           "Season Position": "19th",
           "Season Points": "12",
