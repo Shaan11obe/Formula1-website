@@ -11,7 +11,7 @@ export default function Page() {
         team="Atlassian Williams Racing"
         driverNumber="55"
         country="Spain"
-        teamColor="#00A0DE" // williams Blue
+        teamColor="#041e42" // williams Blue
         driverImage="/drivers/sai.png"
         seasonStats={{
           "Season Position": "2nd",

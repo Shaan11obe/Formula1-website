@@ -52,7 +52,7 @@ const navitems: NavItem[] = [
       { label: "Alex Albon", link: "/drivers/williams/albon", iconImage: "/williams-logo.png" },
       { label: "Carlos Sainz", link: "/drivers/williams/sainz", iconImage: "/williams-logo.png" },
       { label: "Pierre Gasly", link: "/drivers/alpine/gasly", iconImage: "/alpine-logo.png" },
-      { label: "Franco Colapinto", link: "/under-connstruction", iconImage: "/alpine-logo.png" },
+      { label: "Franco Colapinto", link: "/under-construction", iconImage: "/alpine-logo.png" },
       { label: "Gabriel Bortoleto", link: "/drivers/sauber/bortoleto", iconImage: "/sauber-logo.png" },
       { label: "Nico Hülkenberg", link: "/drivers/sauber/hulkenberg", iconImage: "/sauber-logo.png" },
     ],
