@@ -1,7 +1,17 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
+import { usePathname } from "next/navigation";
+
+// Helper to prepend basePath for static builds (like GitHub Pages)
+const withBasePath = (path: string) => {
+  if (typeof window === "undefined") return path;
+  const basePath = (window as any).__NEXT_DATA__?.assetPrefix || "";
+  return `${basePath}${path}`;
+};
 
 type NavItem = {
   label: string;
@@ -32,106 +42,26 @@ const navitems: NavItem[] = [
     label: "Drivers",
     link: "",
     children: [
-      {
-        label: "Max Verstappen",
-        link: "/drivers/redbull/verstappen",
-        iconImage: "/red-bull-logo.png",
-      },
-      {
-        label: "Yuki Tsunoda",
-        link: "/drivers/redbull/tsunoda",
-        iconImage: "/red-bull-logo.png",
-      },
-      {
-        label: "Charles Leclerc",
-        link: "/drivers/ferrari/leclerc",
-        iconImage: "/ferrari-logo.png",
-      },
-      {
-        label: "Lewis Hamilton",
-        link: "drivers/ferrari/hamilton",
-        iconImage: "/ferrari-logo.png",
-      },
-      {
-        label: "Oscar Piastri",
-        link: "/drivers/Mclaren/piastri",
-        iconImage: "/mclaren-logo.png",
-      },
-      {
-        label: "Lando Norris",
-        link: "/drivers/Mclaren/norris",
-        iconImage: "/mclaren-logo.png",
-      },
-      {
-        label: "George Russell",
-        link: "/drivers/mercedes/russell",
-        iconImage: "/mercedes-logo.png",
-        },
-        {
-        label: "Andrea Kimi Antonelli",
-        link: "/drivers/mercedes/antonelli",
-        iconImage: "/mercedes-logo.png",
-      },
-      {
-        label: "Fernando Alonso",
-        link: "/drivers/aston-martin/alonso",
-        iconImage: "/astonMartin-logo.png",
-      },
-      {
-        label: "Lance Stroll",
-        link: "/drivers/aston-martin/stroll",
-        iconImage: "/astonMartin-logo.png",
-      },
-      {
-        label: "Esterban Ocon",
-        link: "#",
-        iconImage: "/haas-logo.png",
-      },
-      {
-        label: "Oliver Bearman",
-        link: "#",
-        iconImage: "/haas-logo.png",
-      },
-      {
-        label: "Liam Lawson",
-        link: "#",
-        iconImage: "/racingbulls-logo.png",
-      },
-      {
-        label: "Isack Hadjar",
-        link: "#",
-        iconImage: "/racingbulls-logo.png",
-      },
-      {
-        label: "Alex Albon",
-        link: "#",
-        iconImage: "/williams-logo.png",
-      },
-      {
-        label: "Carlos Sainz",
-        link: "#",
-        iconImage: "/williams-logo.png",
-      },
-      {
-        label: "Pierre Gasly",
-        link: "#",
-        iconImage: "/alpine-logo.png",
-      },
-      {
-        label: "Franco Colapinto",
-        link: "#",
-        iconImage: "/alpine-logo.png",
-      },
-      {
-        label: "Gabriel Bortoleto",
-        link: "#",
-        iconImage: "/sauber-logo.png",
-      },
-      {
-        label: "Nico Hülkenberg",
-        link: "#",
-        iconImage: "/sauber-logo.png",
-      },
+      { label: "Max Verstappen", link: "/drivers/redbull/verstappen", iconImage: "/red-bull-logo.png" },
+      { label: "Yuki Tsunoda", link: "/drivers/redbull/tsunoda", iconImage: "/red-bull-logo.png" },
+      { label: "Charles Leclerc", link: "/drivers/ferrari/leclerc", iconImage: "/ferrari-logo.png" },
+      { label: "Lewis Hamilton", link: "/drivers/ferrari/hamilton", iconImage: "/ferrari-logo.png" },
+      { label: "Oscar Piastri", link: "/drivers/Mclaren/piastri", iconImage: "/mclaren-logo.png" },
+      { label: "Lando Norris", link: "/drivers/Mclaren/norris", iconImage: "/mclaren-logo.png" },
+      { label: "George Russell", link: "/drivers/mercedes/russell", iconImage: "/mercedes-logo.png" },
+      { label: "Andrea Kimi Antonelli", link: "/drivers/mercedes/antonelli", iconImage: "/mercedes-logo.png" },
+      { label: "Fernando Alonso", link: "/drivers/aston-martin/alonso", iconImage: "/astonMartin-logo.png" },
+      { label: "Lance Stroll", link: "/drivers/aston-martin/stroll", iconImage: "/astonMartin-logo.png" },
+      { label: "Esterban Ocon", link: "/under-construction", iconImage: "/haas-logo.png" },
+      { label: "Oliver Bearman", link: "#", iconImage: "/haas-logo.png" },
+      { label: "Liam Lawson", link: "/under-construction", iconImage: "/racingbulls-logo.png" },
+      { label: "Isack Hadjar", link: "#", iconImage: "/racingbulls-logo.png" },
+      { label: "Alex Albon", link: "#", iconImage: "/williams-logo.png" },
+      { label: "Carlos Sainz", link: "#", iconImage: "/williams-logo.png" },
+      { label: "Pierre Gasly", link: "/under-construction", iconImage: "/alpine-logo.png" },
+      { label: "Franco Colapinto", link: "#", iconImage: "/alpine-logo.png" },
+      { label: "Gabriel Bortoleto", link: "#", iconImage: "/sauber-logo.png" },
+      { label: "Nico Hülkenberg", link: "#", iconImage: "/sauber-logo.png" },
     ],
   },
   {
@@ -144,9 +74,9 @@ const navitems: NavItem[] = [
           { label: "Silverstone", link: "#" },
           { label: "Monza", link: "#" },
           { label: "Spa-Francorchamps", link: "#" },
-          { label: "Circuit de Barcelona-Catalunya", link: "#" },
+          { label: "Circuit de Barcelona-Catalunya", link: "/under-construction" },
           { label: "Circuit Zandvoort", link: "#" },
-          { label: "Emila-Romanga (Imola)", link: "#" },
+          { label: "Emila-Romanga (Imola)", link: "/under-construction" },
           { label: "Circuit de Monaco", link: "#" },
           { label: "Red Bull Ring (Austria)", link: "#" },
           { label: "Hungaroring", link: "#" },
@@ -166,7 +96,7 @@ const navitems: NavItem[] = [
         children: [
           { label: "Circuit of the Americas", link: "#" },
           { label: "Miami International Autodrome", link: "#" },
-          { label: "Las Vegas Strip Circuit", link: "#" },
+          { label: "Las Vegas Strip Circuit", link: "/under-construction" },
           { label: "Montréal (Gilles Villeneuve)", link: "#" },
           { label: "Autodromo Hermanos Rodriguez (Mexico)", link: "#" },
         ],
@@ -205,7 +135,7 @@ const Dropdown: React.FC<{ items: NavItem[] }> = ({ items }) => {
             <div className="flex items-center gap-2">
               {ch.iconImage && (
                 <Image
-                  src={ch.iconImage}
+                  src={withBasePath(ch.iconImage.replace(/^\/?public\//, "/"))}
                   alt={`${ch.label}-logo`}
                   width={28}
                   height={22}
@@ -246,7 +176,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/">
           <Image
-            src={"/F1-logo.png"}
+            src={withBasePath("/F1-logo.png")}
             width={128}
             height={80}
             alt="Logo"
