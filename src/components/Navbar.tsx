@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
-import { usePathname } from "next/navigation";
+;
 
 // Helper to prepend basePath for static builds (like GitHub Pages)
 const withBasePath = (path: string) => {
   if (typeof window === "undefined") return path;
-  const basePath = (window as any).__NEXT_DATA__?.assetPrefix || "";
+  const basePath = window.__NEXT_DATA__?.assetPrefix || "";
   return `${basePath}${path}`;
 };
 

@@ -1,6 +1,6 @@
 import DriverStats from "@/components/Driver";
 // At the top of your component file
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 // not completed yet
 
 export default function Page() {

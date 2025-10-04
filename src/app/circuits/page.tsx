@@ -1,5 +1,4 @@
 import CarouselSection from "@/components/Carousel";
-import CarGrid from "@/components/CarGrid";
 import TrackGrid from "@/components/TrackGrid"
 
 const TeamsPage = () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { withBasePath } from "@/utils/basePath";
@@ -12,7 +12,7 @@ type TeamPromoProps = {
   driversLink?: string;
   shopLink?: string;
   backgroundColor?: string;
-  divider?: ReactNode;
+  divider?: string;
 };
 
 const TeamPromo: React.FC<TeamPromoProps> = ({
@@ -69,7 +69,7 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
       {/* Divider / Logo */}
       {divider && (
         <div className="relative z-10 mb-6 flex justify-center">
-          <div className="w-16 h-16 flex items-center justify-center">{divider}</div>
+          <div className="w-16 h-16 flex items-center justify-center"><Image src={divider} alt={teamName} fill/></div>
         </div>
       )}
 

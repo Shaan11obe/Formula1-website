@@ -1,7 +1,7 @@
 import React from 'react'
 import ScheduleCard from "@/components/Schedule"
 // At the top of your component file
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 
 
 const brazilSchedule = [
