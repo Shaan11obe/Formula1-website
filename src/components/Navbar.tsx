@@ -20,7 +20,7 @@ const navitems: NavItem[] = [
     label: "Teams",
     link: "/teams",
     children: [
-      { label: "RedBull", link: "/teams/redBull", iconImage: "/red-bull-logo.png" },
+      { label: "RedBull", link: "/teams/RedBull", iconImage: "/red-bull-logo.png" },
       { label: "Ferrari", link: "/teams/ferrari", iconImage: "/ferrari-logo.png" },
       { label: "Mclaren", link: "/teams/mclaren", iconImage: "/mclaren-logo.png" },
       { label: "Mercedes", link: "/teams/mercedes", iconImage: "/mercedes-logo.png" },

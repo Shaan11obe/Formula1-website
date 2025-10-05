@@ -37,13 +37,13 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
       style={{ backgroundColor }}
     >
       {/* Background color overlay */}
-      <div
+      {/* <div
         className="absolute inset-0"
         style={{
           background: `linear-gradient(to bottom, ${backgroundColor}90, ${backgroundColor})`,
           mixBlendMode: "multiply",
         }}
-      />
+      /> */}
 
       {/* Car image */}
       <div className="relative z-10 w-full max-w-6xl flex justify-center mb-8">
