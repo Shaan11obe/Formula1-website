@@ -1,15 +1,17 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { withBasePath } from "@/utils/basePath";
 
 type TeamPromoProps = {
   teamName: string;
   carImage: string;
-  drivers: string[];
-  driversLink?: string; // e.g. "/drivers/redbull"
+  driverOne: string;
+  driverTwo: string;
+  driverOneLink: string;
+  driverTwoLink: string;
   shopLink?: string;
   backgroundColor?: string;
   divider?: string;
@@ -18,20 +20,30 @@ type TeamPromoProps = {
 const TeamPromo: React.FC<TeamPromoProps> = ({
   teamName,
   carImage,
-  drivers,
-  driversLink = "#",
+  driverOne,
+  driverTwo,
+  driverOneLink,
+  driverTwoLink,
   shopLink = "#",
-  backgroundColor = "bg-neutral-900",
+  backgroundColor = "#000",
   divider,
 }) => {
+  // Normalize image path for static export
   const normalizedCarImage = withBasePath(carImage.replace(/^\/?public\//, "/"));
 
   return (
     <section
-       className={`${backgroundColor} relative w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-14`}
+      className="relative w-full flex flex-col items-center justify-center overflow-hidden py-20"
+      style={{ backgroundColor }}
     >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
+      {/* Background color overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom, ${backgroundColor}90, ${backgroundColor})`,
+          mixBlendMode: "multiply",
+        }}
+      />
 
       {/* Car image */}
       <div className="relative z-10 w-full max-w-6xl flex justify-center mb-8">
@@ -52,41 +64,38 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
         {teamName}
       </h1>
 
-      {/* Driver links (single line look, separate links) */}
-      <div className="relative z-10 flex space-x-4 text-gray-200 mb-6 text-lg font-light text-center">
-        {drivers.map((driver, idx) => (
-          <React.Fragment key={idx}>
-            <Link
-              href={`${driversLink}/${driver.toLowerCase().replace(/\s+/g, "-")}`}
-              className="hover:text-white hover:underline underline-offset-4 transition"
-            >
-              {driver}
-            </Link>
-            {idx < drivers.length - 1 && (
-              <span className="opacity-50 select-none">|</span>
-            )}
-          </React.Fragment>
-        ))}
+      {/* Separate driver links */}
+      <div className="relative z-10 flex items-center space-x-4 text-gray-200 mb-6 text-lg font-light">
+        <Link
+          href={driverOneLink}
+          className="hover:text-white hover:underline underline-offset-4 transition"
+        >
+          {driverOne}
+        </Link>
+        <span className="opacity-50">|</span>
+        <Link
+          href={driverTwoLink}
+          className="hover:text-white hover:underline underline-offset-4 transition"
+        >
+          {driverTwo}
+        </Link>
       </div>
 
-      {/* Divider / logo */}
+      {/* Divider (optional) */}
       {divider && (
         <div className="relative z-10 mb-6 flex justify-center">
-          <div className="relative w-16 h-16">
+          <div className="w-16 h-16 relative">
             <Image src={divider} alt={teamName} fill />
           </div>
         </div>
       )}
 
-      {/* Call-to-action button */}
+      {/* CTA button */}
       <Link
         href={shopLink}
         className="relative z-10 px-8 py-3 border border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300"
-      >
-        Shop now
-      </Link>
-    </section>
-  );
-};
-
+      />
+      </section> 
+      );
+    }
 export default TeamPromo;

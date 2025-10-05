@@ -1,21 +1,19 @@
-import React from "react";
 import TeamPromo from "@/components/Header";
-// At the top of your component file
 
-
-const page = () => {
+export default function FerrariPage() {
   return (
-    <main className="pt-20 mt-12 ">
+    <main>
       <TeamPromo
         teamName="MoneyGram Haas F1 Team"
         carImage="/haas-logo.png"
-        drivers={["Esteban Ocon", "Oliver Bearman"]}
-        shopLink="/teams/haas"
-        driversLink="/drivers/haas"
-        divider="/haas-logo.png"
-        />
+        driverOne="Esteban Ocon"
+        driverTwo="Oliver Bearman"
+        driverOneLink="/under-construction"
+        driverTwoLink="/drivers/haas"
+        backgroundColor="#9c9fa2"
+        divider="/haas-logo.png" // ✅ Added divider prop
+        shopLink="/under-construction"
+      />
     </main>
   );
-};
-
-export default page;
+}

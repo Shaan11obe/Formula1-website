@@ -156,12 +156,12 @@ const Navbar = () => {
     { bg: string; text: string; logo: string }
   > = {
     redbull: { bg: "#1E41FF", text: "text-white", logo: "/F1-logo-white.png" },
-    ferrari: { bg: "#DC0000", text: "text-white", logo: "/F1-logo-white.png" },
-    mclaren: { bg: "#FF8700", text: "text-black", logo: "/F1-logo.png" },
-    mercedes: { bg: "#00D2BE", text: "text-black", logo: "/F1-logo.png" },
-    haas: { bg: "#B6BABD", text: "text-black", logo: "/F1-logo.png" },
-    rb: { bg: "#6692FF", text: "text-white", logo: "/F1-logo-white.png" },
-    williams: { bg: "#00A3E0", text: "text-white", logo: "/F1-logo-white.png" },
+    ferrari: { bg: "#c4151c", text: "text-white", logo: "/F1-logo-white.png" },
+    mclaren: { bg: "#FF8000", text: "text-black", logo: "/F1-logo.png" },
+    mercedes: { bg: "#C8CCCE", text: "text-black", logo: "/F1-logo.png" },
+    haas: { bg: "#9c9fa2", text: "text-black", logo: "/F1-logo.png" },
+    rb: { bg: "#1432cb", text: "text-white", logo: "/F1-logo-white.png" },
+    williams: { bg: "#041e42", text: "text-white", logo: "/F1-logo-white.png" },
   };
 
   // Determine current theme

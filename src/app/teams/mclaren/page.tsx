@@ -1,21 +1,19 @@
-import React from "react";
 import TeamPromo from "@/components/Header";
-// At the top of your component file
 
-
-const page = () => {
+export default function MclarenPage() {
   return (
-    <main className="pt-20 mt-12 ">
+    <main>
       <TeamPromo
-        teamName="McLaren Racing Ltd"
+        teamName="mclaren F1 Team"
         carImage="/mclaren-logo.png"
-        drivers={["Max Verstappen", "Yuki Tsunoda"]}
+        driverOne="Lando Norris"
+        driverTwo="Oscar Piastri"
+        driverOneLink="/drivers/mclaren/norris"
+        driverTwoLink="/drivers/mclaren/piastri"
+        backgroundColor="#FF8000"
+        divider="/mclaren-logo.png" // ✅ Added divider prop
         shopLink="/under-construction"
-        driversLink="/drivers/mclaren"
-        divider="/mclaren-logo.png"
-        />
+      />
     </main>
   );
-};
-
-export default page;
+}

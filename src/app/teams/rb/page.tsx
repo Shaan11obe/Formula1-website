@@ -1,21 +1,19 @@
-import React from "react";
 import TeamPromo from "@/components/Header";
-// At the top of your component file
 
-
-const page = () => {
+export default function RbPage() {
   return (
-    <main className="pt-20 mt-12 ">
+    <main>
       <TeamPromo
-        teamName="Red Bull Racing"
-        carImage="/red-bull-logo.png"
-        drivers={["Max Verstappen", "Yuki Tsunoda"]}
-        shopLink="/teams/redbull"
-        driversLink="/drivers/redbull"
-        divider="/red-bull-logo.png"
-        />
+        teamName="Vias Cash App Racing Bulls"
+        carImage="/racingbulls-logo.png"
+        driverOne="Isack Hadjar"
+        driverTwo="Liam Lawson"
+        driverOneLink="/drivers/rb"
+        driverTwoLink="/under-construction"
+        backgroundColor="#1432cb"
+        divider="/racingbulls-logo.png" // ✅ Added divider prop
+        shopLink="/under-construction"
+      />
     </main>
   );
-};
-
-export default page;
+}
