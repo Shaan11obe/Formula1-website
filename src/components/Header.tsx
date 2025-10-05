@@ -33,7 +33,7 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
 
   return (
     <section
-      className="relative w-full flex flex-col items-center justify-center overflow-hidden py-20"
+      className="relative w-full flex flex-col items-center justify-center overflow-hidden py-26"
       style={{ backgroundColor }}
     >
       {/* Background color overlay */}
