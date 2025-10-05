@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoIosArrowDown } from "react-icons/io";
 import { withBasePath } from "@/utils/basePath";
+import { usePathname } from "next/navigation";
 
 type NavItem = {
   label: string;
@@ -25,7 +26,7 @@ const navitems: NavItem[] = [
       { label: "Mercedes", link: "/teams/Mercedes", iconImage: "/mercedes-logo.png" },
       { label: "Aston Martin", link: "/under-construction", iconImage: "/astonMartin-logo.png" },
       { label: "Haas", link: "/teams/Haas", iconImage: "/haas-logo.png" },
-      { label: "Racing Bulls", link: "/teams/Racing-Bulls", iconImage: "/racingbulls-logo.png" },
+      { label: "Racing Bulls", link: "/teams/rb", iconImage: "/racingbulls-logo.png" },
       { label: "Williams", link: "/teams/Williams", iconImage: "/williams-logo.png" },
       { label: "Alpine", link: "/under-construction", iconImage: "/alpine-logo.png" },
       { label: "Kick Sauber", link: "/under-construction", iconImage: "/sauber-logo.png" },
@@ -47,7 +48,7 @@ const navitems: NavItem[] = [
       { label: "Lance Stroll", link: "/drivers/aston-martin/stroll", iconImage: "/astonMartin-logo.png" },
       { label: "Esteban Ocon", link: "/under-construction", iconImage: "/haas-logo.png" },
       { label: "Oliver Bearman", link: "/drivers/haas", iconImage: "/haas-logo.png" },
-      { label: "Liam Lawson", link: "/under-connstruction", iconImage: "/racingbulls-logo.png" },
+      { label: "Liam Lawson", link: "/under-construction", iconImage: "/racingbulls-logo.png" },
       { label: "Isack Hadjar", link: "/drivers/rb", iconImage: "/racingbulls-logo.png" },
       { label: "Alex Albon", link: "/drivers/williams/albon", iconImage: "/williams-logo.png" },
       { label: "Carlos Sainz", link: "/drivers/williams/sainz", iconImage: "/williams-logo.png" },
@@ -147,35 +148,57 @@ const Dropdown: React.FC<{ items: NavItem[] }> = ({ items }) => {
 
 // Navbar component
 const Navbar = () => {
+  const pathname = usePathname();
+
+  // Map route patterns to brand styles
+  const teamThemes: Record<
+    string,
+    { bg: string; text: string; logo: string }
+  > = {
+    redbull: { bg: "#1E41FF", text: "text-white", logo: "/F1-logo-white.png" },
+    ferrari: { bg: "#DC0000", text: "text-white", logo: "/F1-logo-white.png" },
+    mclaren: { bg: "#FF8700", text: "text-black", logo: "/F1-logo.png" },
+    mercedes: { bg: "#00D2BE", text: "text-black", logo: "/F1-logo.png" },
+    haas: { bg: "#B6BABD", text: "text-black", logo: "/F1-logo.png" },
+    rb: { bg: "#6692FF", text: "text-white", logo: "/F1-logo-white.png" },
+    williams: { bg: "#00A3E0", text: "text-white", logo: "/F1-logo-white.png" },
+  };
+
+  // Determine current theme
+  const activeTheme =
+    Object.entries(teamThemes).find(([key]) =>
+      pathname.toLowerCase().includes(key)
+    )?.[1] ?? { bg: "white", text: "text-black", logo: "/F1-logo.png" };
+
   return (
-    <div className="mx-auto flex w-full max-w-7xl justify-between px-4 py-5 top-0 absolute text-sm text-black bg-white">
+    <div
+      className={`mx-auto flex w-full max-w-7xl justify-between px-4 py-5 top-0 absolute text-sm transition-colors duration-300`}
+      style={{ backgroundColor: activeTheme.bg }}
+    >
       {/* Left side */}
-      <section className="flex items-center gap-10 text-md">
-        {/* Logo */}
+      <section className={`flex items-center gap-10 text-md ${activeTheme.text}`}>
         <Link href="/">
           <Image
-            src={withBasePath("/F1-logo.png")}
+            src={withBasePath(activeTheme.logo)}
             width={128}
             height={80}
             alt="Logo"
-            className="rounded-xl"
+            className="rounded-xl transition-all duration-300"
           />
         </Link>
 
-        {/* Navigation */}
         <div className="flex items-center gap-4">
           {navitems.map((d, i) => (
             <div key={i} className="relative group px-2 py-3">
               <Link
                 href={d.link ?? "#"}
-                className="flex cursor-pointer items-center gap-2 text-neutral-400 transition-all group-hover:text-black"
+                className={`flex cursor-pointer items-center gap-2 transition-all group-hover:opacity-80 ${activeTheme.text}`}
               >
                 <span>{d.label}</span>
                 {d.children && (
                   <IoIosArrowDown className="transition-transform group-hover:rotate-180" />
                 )}
               </Link>
-
               {d.children && <Dropdown items={d.children} />}
             </div>
           ))}
@@ -183,11 +206,12 @@ const Navbar = () => {
       </section>
 
       {/* Right side */}
-      <section className="flex items-center gap-8">
-        <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
+      <section className={`flex items-center gap-8 ${activeTheme.text}`}>
+        <button className="h-fit opacity-80 hover:opacity-100 transition-all">
           Login
         </button>
-        <button className="h-fit rounded-xl border-2 border-neutral-400 px-4 py-2 text-neutral-400 transition-all hover:border-black hover:text-black/90">
+        <button className={`h-fit rounded-xl border-2 px-4 py-2 opacity-80 hover:opacity-100 transition-all
+          ${activeTheme.text} border-current`}>
           Register
         </button>
       </section>

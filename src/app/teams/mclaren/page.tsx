@@ -7,12 +7,12 @@ const page = () => {
   return (
     <main className="pt-20 mt-12 ">
       <TeamPromo
-        teamName="Red Bull Racing"
-        carImage="/red-bull-logo.png"
+        teamName="McLaren Racing Ltd"
+        carImage="/mclaren-logo.png"
         drivers={["Max Verstappen", "Yuki Tsunoda"]}
-        shopLink="/teams/redbull"
-        driversLink="/drivers/redbull"
-        divider="/red-bull-logo.png"
+        shopLink="/under-construction"
+        driversLink="/drivers/mclaren"
+        divider="/mclaren-logo.png"
         />
     </main>
   );

@@ -9,7 +9,7 @@ type TeamPromoProps = {
   teamName: string;
   carImage: string;
   drivers: string[];
-  driversLink?: string;
+  driversLink?: string; // e.g. "/drivers/redbull"
   shopLink?: string;
   backgroundColor?: string;
   divider?: string;
@@ -24,17 +24,16 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
   backgroundColor = "bg-neutral-900",
   divider,
 }) => {
-  // Normalize and add base path
   const normalizedCarImage = withBasePath(carImage.replace(/^\/?public\//, "/"));
 
   return (
     <section
-      className={`${backgroundColor} relative w-full flex flex-col items-center justify-center overflow-hidden py-20`}
+       className={`${backgroundColor} relative w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-14`}
     >
-      {/* Background gradient overlay */}
+      {/* Background overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
 
-      {/* Car Image */}
+      {/* Car image */}
       <div className="relative z-10 w-full max-w-6xl flex justify-center mb-8">
         <div className="relative w-full h-[28rem]">
           <Image
@@ -48,28 +47,34 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
         </div>
       </div>
 
-      {/* Team Name */}
+      {/* Team name */}
       <h1 className="relative z-10 text-white text-5xl font-extrabold tracking-wide mb-4 text-center">
         {teamName}
       </h1>
 
-      {/* Drivers as one link */}
-      <Link
-        href={driversLink}
-        className="relative z-10 flex space-x-4 text-gray-200 mb-6 text-lg font-light hover:text-white hover:underline underline-offset-4 transition"
-      >
+      {/* Driver links (single line look, separate links) */}
+      <div className="relative z-10 flex space-x-4 text-gray-200 mb-6 text-lg font-light text-center">
         {drivers.map((driver, idx) => (
           <React.Fragment key={idx}>
-            <span>{driver}</span>
-            {idx < drivers.length - 1 && <span className="opacity-50">|</span>}
+            <Link
+              href={`${driversLink}/${driver.toLowerCase().replace(/\s+/g, "-")}`}
+              className="hover:text-white hover:underline underline-offset-4 transition"
+            >
+              {driver}
+            </Link>
+            {idx < drivers.length - 1 && (
+              <span className="opacity-50 select-none">|</span>
+            )}
           </React.Fragment>
         ))}
-      </Link>
+      </div>
 
-      {/* Divider / Logo */}
+      {/* Divider / logo */}
       {divider && (
         <div className="relative z-10 mb-6 flex justify-center">
-          <div className="w-16 h-16 flex items-center justify-center"><Image src={divider} alt={teamName} fill/></div>
+          <div className="relative w-16 h-16">
+            <Image src={divider} alt={teamName} fill />
+          </div>
         </div>
       )}
 
