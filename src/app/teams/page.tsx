@@ -6,7 +6,7 @@ const TeamsPage = () => {
     "/mclaren-logo.png",
     "/red-bull-logo.png",
     "/mercedes-logo.png",
-    "/ferrai-logo.png",
+    "/ferrari-logo.png",
     "/haas-logo.png",
     "/racingbulls-logo.png",
   ];

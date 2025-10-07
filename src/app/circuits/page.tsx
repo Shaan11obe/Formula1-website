@@ -3,14 +3,14 @@ import TrackGrid from "@/components/TrackGrid"
 
 const TeamsPage = () => {
   const images = [
-    "/tracks/ALBERT_PARK.jpg",
-    "/tracks/SHANGHAI.jpg",
-    "/tracks/SUZUKA.jpg",
-    "/tracks/BAHRAIN.jpg",
-    "/tracks/JEDDAH.jpg",
-    "/tracks/MIAMI.jpg",
-    "/tracks/IMOLA.jpg",
-    "/tracks/MONACO.jpg",
+    "/tracks/ALBERT_PARK.png",
+    "/tracks/SHANGHAI.png",
+    "/tracks/SUZUKA.png",
+    "/tracks/BAHRAIN.png",
+    "/tracks/JEDDAH.png",
+    "/tracks/MIAMI.png",
+    "/tracks/IMOLA.png",
+    "/tracks/MONACO.png",
   ];
 
   return (
