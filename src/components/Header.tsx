@@ -85,7 +85,7 @@ const TeamPromo: React.FC<TeamPromoProps> = ({
       {divider && (
         <div className="relative z-10 mb-6 flex justify-center">
           <div className="w-16 h-16 relative">
-            <Image src={divider} alt={teamName} fill />
+            <Image src={normalizedCarImage} alt={teamName} fill />
           </div>
         </div>
       )}

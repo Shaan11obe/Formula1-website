@@ -4,7 +4,7 @@ export default function MclarenPage() {
   return (
     <main>
       <TeamPromo
-        teamName="mclaren F1 Team"
+        teamName="Mclaren F1 Team"
         carImage="/mclaren-logo.png"
         driverOne="Lando Norris"
         driverTwo="Oscar Piastri"

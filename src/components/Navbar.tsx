@@ -157,9 +157,9 @@ const Navbar = () => {
   > = {
     redbull: { bg: "#00174C", text: "text-white", logo: "/F1-logo-white.png" },
     ferrari: { bg: "#c4151c", text: "text-white", logo: "/F1-logo-white.png" },
-    mclaren: { bg: "#FF8000", text: "text-black", logo: "/F1-logo-white.png" },
-    mercedes: { bg: "#C8CCCE", text: "text-black", logo: "/F1-logo-white.png" },
-    haas: { bg: "#9c9fa2", text: "text-black", logo: "/F1-logo-white.png" },
+    mclaren: { bg: "#FF8000", text: "text-black", logo: "/F1-logo.png" },
+    mercedes: { bg: "#C8CCCE", text: "text-black", logo: "/F1-logo.png" },
+    haas: { bg: "#9c9fa2", text: "text-black", logo: "/F1-logo.png" },
     rb: { bg: "#1432cb", text: "text-white", logo: "/F1-logo-white.png" },
     williams: { bg: "#041e42", text: "text-white", logo: "/F1-logo-white.png" },
   };
@@ -172,7 +172,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`mx-auto flex w-full max-w-7xl justify-between px-4 py-5 top-0 absolute text-sm transition-colors duration-300`}
+      className={`mx-auto flex w-full justify-between px-4 py-5 top-0 absolute text-sm transition-colors duration-300`}
       style={{ backgroundColor: activeTheme.bg }}
     >
       {/* Left side */}
